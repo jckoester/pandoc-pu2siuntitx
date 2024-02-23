@@ -1,9 +1,12 @@
 # pu2siunitx
 
-`\pu{}` is a command provided by the [mhchem](https://ctan.org/pkg/mhchem) package for MathJaxto typeset physical units. This command is not part of the LaTeX version of mhchem. In LaTeX [siunitx](https://ctan.org/pkg/siunitx) is a widely-used LaTeX package for typesettings values with units. However it is not part of MathJax.
+`\pu{}` is an element provided by the [mhchem](https://ctan.org/pkg/mhchem) package for MathJaxto typeset physical units. This command is not part of the LaTeX version of mhchem. In LaTeX [siunitx](https://ctan.org/pkg/siunitx) is a widely-used LaTeX package for typesettings values with units. However it is not part of MathJax.
+
+> [!WARNING]
+> This filter is currently in beta state. It is not yet properly tested!
 
 ## What this filter does
-This filter replaces any `\pu{}` commands in RawInline, RawBlock, and Math elements, with `\qty{}`or `\unit{}`elements wrapped in Math elements  that can be used in LaTeX files.
+This filter replaces any `\pu{}` elements in RawInline, RawBlock, and Math elements, with `\qty{}`or `\unit{}` elements wrapped in Math elements  that can be used in LaTeX files.
 The filter tries to replace unit symbols with their respective shortcode from siunitx.
 
 ## What this filter does not do
