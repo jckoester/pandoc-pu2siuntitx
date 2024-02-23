@@ -103,6 +103,8 @@ function siparse(us)
   --- powers
   us= string.gsub(us, "%s2", "\\squared ")
   us= string.gsub(us, "%s3", "\\cubed ")
+  --- replace whitespaces at the end
+  us= string.gsub(us, "%s$", "")
   return us
 end
 
@@ -119,7 +121,7 @@ function handlePu(s)
 --    return "\\text{Could not parse}"
   end
   -- Die zweite Hälfte ist die Einheit, muss geparst werden!
-  local result = "\\qty{" .. string.sub(inner,0,p) .. "}{" .. siparse(string.sub(inner,p,-1)) .. "}"
+  local result = "\\qty{" .. string.gsub(string.sub(inner,0,p), "%s$", "") .. "}{" .. siparse(string.sub(inner,p,-1)) .. "}"
   ---if not result then
   --  io.stderr:write("Could not parse mhchem formula " .. inner .. "\n")
   --  return "\\text{Could not parse}"
