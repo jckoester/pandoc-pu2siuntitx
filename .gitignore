@@ -3,3 +3,5 @@ output.aux
 output.fdb_latexmk
 *.fls
 *.log
+*.fdb_latexmk
+*.aux

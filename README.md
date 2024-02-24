@@ -1,6 +1,6 @@
 # pu2siunitx
 
-`\pu{}` is an element provided by the [mhchem](https://ctan.org/pkg/mhchem) package for MathJaxto typeset physical units. This command is not part of the LaTeX version of mhchem. In LaTeX [siunitx](https://ctan.org/pkg/siunitx) is a widely-used LaTeX package for typesettings values with units. However it is not part of MathJax.
+`\pu{}` is a macro provided by the [mhchem](https://ctan.org/pkg/mhchem) package for MathJaxto typeset physical units. This macro is not part of the LaTeX version of mhchem. In LaTeX [siunitx](https://ctan.org/pkg/siunitx) is a widely-used LaTeX package for typesettings values with units. However it is not part of MathJax.
 
 > [!WARNING]
 > This filter is currently in beta state. It is not yet properly tested!

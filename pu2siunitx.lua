@@ -20,7 +20,7 @@ local combinedunits = {
   "F", "fF", "pF", "nF", "mF",
   "H", "fH", "pH", "nH", "mH", 
   "C", "nC", "mC",
-  "T", "mT",
+  "mT",
   "K",
   "dB"
 }
@@ -35,12 +35,25 @@ function siparse(us)
   us= string.gsub(us, "%*(%a+)", "\\cdot %1")
   -- special unit - some have to be translated before standard units
   us= string.gsub(us, "%sWb", "\\weber")
+  us= string.gsub(us, "%scd", "\\candela")
+  us= string.gsub(us, "%srad", "\\radian ")
+  us= string.gsub(us, "d$", "\\day")
+  us= string.gsub(us, "%sGy", "\\gray ")
+  us= string.gsub(us, "%slm", "\\lumen ")
+  us= string.gsub(us, "%skat", "\\katal ")
+  us= string.gsub(us, "%slx", "\\lux ")
+  us= string.gsub(us, "%ssr", "\\steradian ")
+  us= string.gsub(us, "%sau", "\\astronomicalunit ")
+  us= string.gsub(us, "%sha", "\\hectare ")
+  us= string.gsub(us, "%sh$", "\\hour ")
+  us= string.gsub(us, "%sNp", "\\neper ")
+  us= string.gsub(us, "%sT$", "\\tesla ")
   --- combined units (short forms)
   for _, v in pairs(combinedunits) do
     us= string.gsub(us, "%s"..v, "\\"..v.." ")
   end
   --- prefixes
-  us= string.gsub(us, "^%s?q", "\\qecto ")
+  us= string.gsub(us, "^%s?q", "\\quecto ")
   us= string.gsub(us, "^%s?r", "\\ronto ")
   us= string.gsub(us, "^%s?y", "\\yocto ")
   us= string.gsub(us, "^%s?z", "\\zepto ")
@@ -49,10 +62,10 @@ function siparse(us)
   us= string.gsub(us, "^%s?p", "\\pico ")
   us= string.gsub(us, "^%s?n", "\\nano ")
   us= string.gsub(us, "^%s?\\mu", "\\micro ")
-  us= string.gsub(us, "^%s?m", "\\milli ")
+  us= string.gsub(us, "^m", "\\milli ")
   us= string.gsub(us, "^%s?c", "\\centi ")
+  us= string.gsub(us, "^%s?da", "\\deca ") -- deca needs to be replaced before deci!
   us= string.gsub(us, "^%s?d", "\\deci ")
-  us= string.gsub(us, "^%s?da", "\\deca ")
   us= string.gsub(us, "^%s?h", "\\hecto ")
   us= string.gsub(us, "^%s?k", "\\kilo ")
   us= string.gsub(us, "^%s?M", "\\mega ")
@@ -74,29 +87,20 @@ function siparse(us)
   us= string.gsub(us, "^%s?Zi", "\\zebi ")
   us= string.gsub(us, "^%s?Yi", "\\yobi ")
   --- special units and units without short form
+  us= string.gsub(us, "%smin", "\\minute ")
   us= string.gsub(us, "%sm", "\\meter ") -- meter has to be treated seperately not to get mixed up by milli
-  us= string.gsub(us, "%sBq", "\\bequerel ")
+  us= string.gsub(us, "%sBq", "\\becquerel ")
   us= string.gsub(us, "%s°C", "\\degreeCelsius ")
-  us= string.gsub(us, "%sGy", "\\gray ")
-  us= string.gsub(us, "%slm", "\\lumen ")
-  us= string.gsub(us, "%skat", "\\katal ")
-  us= string.gsub(us, "%slx", "\\lux ")
-  us= string.gsub(us, "%srad", "\\radian ")
   us= string.gsub(us, "%sSv", "\\sievert ")
   us= string.gsub(us, "%sS", "\\siemens ")
-  us= string.gsub(us, "%ssr", "\\sterradian ")
   --- special units - non SI
-  us= string.gsub(us, "%sau", "\\astronomicalunit ")
   us= string.gsub(us, "%sB", "\\bel ")
   us= string.gsub(us, "%sDa", "\\dalton ")
   us= string.gsub(us, "%s°", "\\degree ")
-  us= string.gsub(us, "%sha", "\\hectare ")
-  us= string.gsub(us, "%sh", "\\hour ")
-  us= string.gsub(us, "%s'", "\\arcminute ")
   us= string.gsub(us, "%s''", "\\arcsecond ")
-  us= string.gsub(us, "%s%min", "\\minute ")
-  us= string.gsub(us, "%s%Np", "\\neper ")
-  us= string.gsub(us, "%s%t", "\\tonne ")
+  us= string.gsub(us, "%s'", "\\arcminute ")
+  us= string.gsub(us, "%st", "\\tonne ")
+  us= string.gsub(us, "\\Omega", "\\ohm ")
   --- powers
   us= string.gsub(us, "%(%a+)%^2", "%1\\squared ")
   us= string.gsub(us, "%(%a+)%^3", "%1\\cubed ")

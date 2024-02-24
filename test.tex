@@ -1,50 +1,99 @@
-\documentclass{article}
+\# Test
 
-\usepackage{siunitx}
+\#\# Examples from the mhchem manual see
+https://mhchem.github.io/MathJax-mhchem/
 
-\begin{document}
+\#\#\# Physical Units (pu) (MathJax or KaTeX only, not for LaTeX)
 
-\section{Test}\label{test}
+`\(\qty{123}{\kJ}\)`: \(\qty{123}{\kJ}\)
 
-Testtext mit Pu inline \(\qty{50 }{\N\meter }\) und einmal ohne Dollars
-\(\qty{50 }{\N\meter }\)
+`\(\qty{123}{\mm\squared}\)`: \(\qty{123}{\mm\squared}\)
 
-Physical Units (pu) (MathJax or KaTeX only, not for LaTeX)
+\#\#\# Two conventions regarding the multiplication within units.
 
-\(\qty{123 }{\kJ }\) \(\qty{123 }{\mm\squared }\)
+\textgreater{[}!NOTE{]} \textgreater{} These will all be translated to
+the same `siunitx`-Macro: \textgreater{} ``\,` \textgreater{}
+123~J~\cdot~s \textgreater{} ``\,` `\(\qty{123}{\J \s}\)`;
+\(\qty{123}{\J \s}\)
 
-There are two conventions regarding the multiplication within units.
+`\(\qty{123}{\J \cdot\s}\)`: \(\qty{123}{\J \cdot\s}\)
 
-\(\qty{123 }{\J \s }\)
+\#\#\# Four conventions regarding divisions.
 
-\(\qty{123 }{\J \cdot\s }\)
+\textgreater{[}!NOTE{]} \textgreater{} These will all be translated to
+the same `siunitx`-Macro: \textgreater{} ``\,` \textgreater{}
+123~kJ~mol\textsuperscript{−1} \textgreater{} ``\,`
 
-There are four conventions regarding divisions.
+`\(\qty{123}{\kJ \per\mol }\)` : \(\qty{123}{\kJ \per\mol }\)
 
-\(\qty{123 }{\kJ \per\mol  }\)
+`\(\qty{123}{\kJ \per\mol }\)` : \(\qty{123}{\kJ \per\mol }\)
 
-\(\qty{123 }{\kJ \per\mol  }\)
+`\(\qty{123}{\kJ \per\mol }\)`: \(\qty{123}{\kJ \per\mol }\)
 
-\(\qty{123 }{\kJ \per\mol  }\)
+`\(\qty{123}{\kJ \per\mol }\)`: \(\qty{123}{\kJ \per\mol }\)
 
-\(\qty{123 }{\kJ \per\mol  }\)
+\#\#\# Four main conventions for writing numbers in scientific notation.
+\textgreater{[}!NOTE{]} \textgreater{} These will all be translated to
+the same `siunitx`-Macro: \textgreater{} ``\,` \textgreater{}
+1.2~×~10\textsuperscript{3}~kJ \textgreater{} ``\,`
 
-There are four main conventions for writing numbers in scientific
-notation.
+`\(\qty{1.2e3}{\kJ}\)`: \(\qty{1.2e3}{\kJ}\)
 
-\(\qty{1.2e3 }{\kJ }\)
+`\(\qty{1,2e3}{\kJ}\)`: \(\qty{1,2e3}{\kJ}\)
 
-\(\qty{1,2e3 }{\kJ }\)
+`\(\qty{1.2E3}{\kJ}\)`: \(\qty{1.2E3}{\kJ}\)
 
-\(\qty{1.2E3 }{\kJ }\)
+`\(\qty{1,2E3}{\kJ}\)`: \(\qty{1,2E3}{\kJ}\)
 
-\(\qty{1,2E3 }{\kJ }\)
+---
 
-If you need more control than is offered here, take a look at the
-siunitx extension.
+\#\# Additional examples for the filter
 
-\(\qty{13.3 }{\micro \meter }\) \(\qty{13.3 }{\mm }\)
-\(\qty{.1 }{\mmol }\) \(\qty{2 }{\kA }\) \(\qty{3600 }{\kWh }\)
-\(\qty{3600 }{\keV }\) \(\qty{25 }{\bequerel }\)
+\#\#\# SI base units
 
-\end{document}
+\(\unit{\A}\), \(\unit{\candela}\), \(\unit{\K}\), \(\unit{\kg}\),
+\(\unit{\meter}\), \(\unit{\mol}\), \(\unit{\s}\)
+
+\#\#\# and derived units
+
+\(\unit{\becquerel}\), \(\unit{\degreeCelsius}\), \(\unit{\C}\),
+\(\unit{\F}\), \(\unit{\gray}\), \(\unit{\Hz}\), \(\unit{\H}\),
+\(\unit{\J}\), \(\unit{\lumen}\), \(\unit{\katal}\), \(\unit{\lux}\),
+\(\unit{\N}\), \(\unit{ \ohm}\), \(\unit{\Pa}\), \(\unit{\radian}\),
+\(\unit{\siemens}\), \(\unit{\sievert}\), \(\unit{\steradian}\),
+\(\unit{\tesla}\), \(\unit{\V}\), \(\unit{\W}\), \(\unit{\weber}\)
+
+\#\#\# Non-si units accepted for use with the International System of
+Units \(\unit{\astronomicalunit}\), \(\unit{\bel}\), \(\unit{\dalton}\),
+\(\unit{ \day}\), \(\unit{\dB}\), \(\unit{\degree}\), \(\unit{\eV}\),
+\(\unit{\hectare}\), \(\unit{\hour}\), \(\unit{\L}\),
+\(\unit{\arcminute}\), \(\unit{\arcsecond}\), \(\unit{\minute}\),
+\(\unit{\neper}\), \(\unit{\tonne}\)
+
+\#\#\# SI prefixes For simplicity all examples use the same base unit.
+I'm using \(\unit{\meter}\) as this is the most difficult to replace
+
+- **quecto**: `\(\qty{123}{\quecto\meter}\)`
+\(\qty{123}{\quecto\meter}\) - **ronto**: `\(\qty{123}{\ronto\meter}\)`
+\(\qty{123}{\ronto\meter}\) - **yocto**: `\(\qty{123}{\yocto\meter}\)`
+\(\qty{123}{\yocto\meter}\) - **zepto**: `\(\qty{123}{\zepto\meter}\)`
+\(\qty{123}{\zepto\meter}\) - **atto**: `\(\qty{123}{\atto\meter}\)`
+\(\qty{123}{\atto\meter}\) - **femto**: `\(\qty{123}{\femto\meter}\)`
+\(\qty{123}{\femto\meter}\) - **pico**: `\(\qty{123}{\pm}\)`
+\(\qty{123}{\pm}\) - **nano**: `\(\qty{123}{\nm}\)` \(\qty{123}{\nm}\) -
+**micro**: `\(\qty{123}{\micro \meter}\)` \(\qty{123}{\micro \meter}\) -
+**milli**: `\(\qty{123}{\mm}\)` \(\qty{123}{\mm}\) - **centi**:
+`\(\qty{123}{\cm}\)` \(\qty{123}{\cm}\) - **deci**: `\(\qty{123}{\dm}\)`
+\(\qty{123}{\dm}\) - **deca**: `\(\qty{123}{\deca\meter}\)`
+\(\qty{123}{\deca\meter}\) - **hecto**: `\(\qty{123}{\hecto\meter}\)`
+\(\qty{123}{\hecto\meter}\) - **kilo**: `\(\qty{123}{\km}\)`
+\(\qty{123}{\km}\) - **mega**: `\(\qty{123}{\mega\meter}\)`
+\(\qty{123}{\mega\meter}\) - **giga**: `\(\qty{123}{\giga\meter}\)`
+\(\qty{123}{\giga\meter}\) - **tera**: `\(\qty{123}{\tera\meter}\)`
+\(\qty{123}{\tera\meter}\) - **peta**: `\(\qty{123}{\peta\meter}\)`
+\(\qty{123}{\peta\meter}\) - **exa**: `\(\qty{123}{\exa\meter}\)`
+\(\qty{123}{\exa\meter}\) - **zetta**: `\(\qty{123}{\zetta\meter}\)`
+\(\qty{123}{\zetta\meter}\) - **yotta**: `\(\qty{123}{\yotta\meter}\)`
+\(\qty{123}{\yotta\meter}\) - **ronna**: `\(\qty{123}{\ronna\meter}\)`
+\(\qty{123}{\ronna\meter}\) - **quetta**: `\(\qty{123}{\quetta\meter}\)`
+\(\qty{123}{\quetta\meter}\)
